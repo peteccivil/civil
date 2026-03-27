@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Civil Engineering | PET Engineering College</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favilogo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -40,7 +42,7 @@
 <body class="bg-slate-50 text-slate-900">
 
     <!-- Top Bar -->
-    <div class="bg-[#002147] text-white py-2 px-6 text-sm flex justify-between items-center hidden md:flex">
+    <div class="bg-[#002147] text-white py-2 px-6 text-sm flex justify-between items-center hidden md:flex border-b border-white/5">
         <div class="flex gap-4 items-center">
             <span class="flex items-center gap-1"><i data-lucide="phone" class="w-4 h-4 text-blue-400"></i> +91 4637 220999</span>
             <span class="flex items-center gap-1 font-semibold underline decoration-blue-500 underline-offset-4 tracking-tight">peteccivil@petengg.ac.in</span>
@@ -64,6 +66,7 @@
                 <a href="#" class="text-blue-600 border-b-2 border-blue-600 pb-1">Home</a>
                 <a href="#objectives" class="text-[#002147] hover:text-blue-600">Academics</a>
                 <a href="#" class="text-[#002147] hover:text-blue-600">Faculty</a>
+                <a href="#associations" class="text-[#002147] hover:text-blue-600">Erace</a>
                 <a href="#" class="text-[#002147] hover:text-blue-600">Magazine</a>
                 <a href="#" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition shadow-md">Contact</a>
             </div>
@@ -116,7 +119,7 @@
     <section class="py-24 px-4">
         <div class="max-w-7xl mx-auto">
             <div class="bvisor-accent rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row items-stretch">
-                <div class="p-10 lg:p-16 lg:w-3/5 text-white">
+                <div class="p-10 lg:p-16 lg:w-3/5 text-white border-b lg:border-b-0 lg:border-r border-white/5">
                     <div class="flex items-center gap-3 mb-6">
                         <span class="bg-blue-400/20 text-blue-100 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] border border-blue-400/30">Innovation Spotlight</span>
                     </div>
@@ -138,9 +141,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="lg:w-2/5 bg-slate-900/40 p-12 flex flex-col items-center justify-center border-t lg:border-t-0 lg:border-l border-white/5 backdrop-blur-md text-center">
-                    <div class="w-32 h-32 bg-white rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl group hover:scale-110 transition">
-                        <span class="text-[#002147] font-black text-5xl italic tracking-tighter">Bv</span>
+                <div class="lg:w-2/5 bg-slate-900/40 p-12 flex flex-col items-center justify-center backdrop-blur-md text-center">
+                    <div class="w-48 h-48 bg-white rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl group hover:scale-110 transition overflow-hidden">
+                        <!-- Add Bvisor Logo Image Here -->
+                        <img src="assets/bvisor-logo.png" alt="Bvisor Logo" class="w-full h-full object-contain p-4" onerror="this.parentElement.innerHTML='<span class=\'text-blue-900 font-black text-6xl italic\'>Bv</span>'">
                     </div>
                     <h4 class="text-white font-black text-2xl tracking-[0.1em] mb-2 uppercase">BVISOR</h4>
                     <button class="mt-8 px-10 py-3 bg-blue-600 text-white rounded-full font-bold text-xs uppercase tracking-widest hover:bg-blue-500 transition shadow-lg">Contact Bvisor</button>
@@ -149,8 +153,51 @@
         </div>
     </section>
 
+    <!-- Erace and FACEAT&P Section -->
+    <section id="associations" class="py-24 px-4 bg-slate-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-black text-[#002147] mb-4 uppercase tracking-widest">Student Excellence & Leadership</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Erace Association -->
+                <div class="bg-white p-10 rounded-[2rem] card-shadow border-t-4 border-blue-900 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 bg-blue-900 text-white rounded-xl flex items-center justify-center font-black">E</div>
+                            <h3 class="text-2xl font-black text-[#002147] uppercase tracking-tight">Erace</h3>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed mb-8">
+                            <span class="font-bold text-[#002147]">Erace</span> is our premier Department Association, serving as the heartbeat of student activities. It provides a platform for technical symposia, talent showcases, and peer-to-peer knowledge sharing, fostering a vibrant community of future engineers.
+                        </p>
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-bold uppercase text-xs tracking-widest hover:gap-4 transition-all">
+                        View Association Activities <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- FACEAT&P Student Chapter -->
+                <div class="bg-blue-900 p-10 rounded-[2rem] card-shadow text-white flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 bg-white text-blue-900 rounded-xl flex items-center justify-center font-black">F</div>
+                            <h3 class="text-2xl font-black uppercase tracking-tight">FACEAT&P Chapter</h3>
+                        </div>
+                        <p class="text-blue-100 leading-relaxed mb-8">
+                            We host a prestigious student chapter of the <span class="font-bold text-white">Federation of All Civil Engineer Associations of Tamilnadu & Puducherry (FACEAT&P)</span>. Established in 2016, we were among the first in the college to host this chapter, providing students direct access to a network of professional associations across the region.
+                        </p>
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 text-blue-400 font-bold uppercase text-xs tracking-widest hover:gap-4 transition-all hover:text-white">
+                        Explore Student Chapter <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- PEOs -->
-    <section id="objectives" class="py-20 px-4 max-w-7xl mx-auto border-b border-slate-200">
+    <section id="objectives" class="py-20 px-4 max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-bold text-[#002147] mb-4 uppercase tracking-widest">Programme Educational Objectives</h2>
             <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
@@ -226,7 +273,7 @@
     <section class="py-20 px-4 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="text-3xl font-black text-[#002147] mb-6 uppercase tracking-widest text-balance">Visit Us</h2>
+                <h2 class="text-3xl font-black text-[#002147] mb-6 uppercase tracking-widest text-balance">Visit Department of <br> Civil Engineering</h2>
                 <p class="text-slate-600 mb-8 leading-relaxed font-medium text-pretty">As a premier department of <span class="text-blue-600 font-bold">PET Engineering College</span>, we invite you to explore department, innovation and campus infrastructure in Vallioor.</p>
                 
                 <!-- Landmark Attraction Card -->
@@ -270,6 +317,25 @@
         </div>
     </section>
 
+    <!-- Department Life (Flickr Gallery RESTORED) -->
+    <section class="py-20 px-4 bg-slate-50">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl font-black text-[#002147] mb-2 uppercase tracking-widest">Department Life</h2>
+            <p class="text-slate-500 text-sm mb-12 italic font-medium">Capturing innovation, learning, and campus moments.</p>
+            
+            <div class="rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-inner min-h-[500px] flex items-center justify-center relative">
+                <!-- PASTE YOUR FLICKR EMBED CODE HERE -->
+                <div class="text-center p-12">
+                    <i data-lucide="camera" class="w-12 h-12 text-slate-300 mx-auto mb-4"></i>
+                    <p class="text-slate-400 text-sm italic font-medium">Flickr Feed Live Placeholder</p>
+                    <div class="mt-4 p-4 border border-slate-100 rounded-xl inline-block text-[10px] uppercase font-bold text-slate-400 tracking-widest bg-slate-50">
+                        Instructions: Upload to Flickr > Share > Embed > Paste Code in this container
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 py-20 px-4">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-balance">
@@ -293,7 +359,7 @@
                 </ul>
             </div>
             <div class="lg:col-span-2 space-y-6">
-                <h4 class="text-white font-black uppercase text-[10px] tracking-[0.2em] border-l-2 border-blue-600 pl-4 text-balance">Reach Us</h4>
+                <h4 class="text-white font-black uppercase text-[10px] tracking-[0.2em] border-l-2 border-blue-600 pl-4 text-balance text-pretty">Reach Us</h4>
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="space-y-4">
                         <p class="text-sm text-slate-300 font-bold uppercase tracking-widest text-[10px]">Campus Address</p>
@@ -344,7 +410,6 @@
                         <li>Why admission at PETEC is the right step.</li>
                     </ul>
                 </div>
-                <!-- Suggested Counseling Chips -->
                 <div class="flex flex-wrap gap-2 mt-2">
                     <button onclick="prefillAI('What are the job opportunities for civil engineers?')" class="bg-white border border-slate-200 text-[10px] font-bold px-3 py-1.5 rounded-full hover:bg-blue-50 hover:border-blue-300 transition uppercase tracking-tighter">Job Roles</button>
                     <button onclick="prefillAI('How do site visits and Bvisor help my career?')" class="bg-white border border-slate-200 text-[10px] font-bold px-3 py-1.5 rounded-full hover:bg-blue-50 hover:border-blue-300 transition uppercase tracking-tighter">Practical Training</button>
@@ -370,7 +435,7 @@
     </div>
 
     <script>
-        const apiKey = ""; // API key is handled by the environment
+        const apiKey = ""; 
         lucide.createIcons();
 
         function toggleAIChat() {
@@ -401,7 +466,6 @@
 
             document.getElementById('ai-chat-container').classList.add('active');
 
-            // User bubble
             const userMsg = document.createElement('div');
             userMsg.className = "bg-slate-200 p-3 rounded-2xl rounded-tr-none text-slate-800 ml-auto max-w-[85%] border border-slate-300 font-medium";
             userMsg.textContent = query;
