@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Directory | Civil Engineering | PET Engineering College</title>
+    <link rel="icon" type="image/png" href="assets/favilogo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .card-shadow { box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.1); }
+        .faculty-card { height: 100%; display: flex; flex-direction: column; }
+        
+        .photo-container {
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            height: 320px;
+        }
+
+        .social-btn {
+            width: 32px;
+            height: 32px;
+            padding: 5px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .social-btn:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+        .social-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 text-pretty">
+
+    <!-- Top Bar -->
+    <div class="bg-[#002147] text-white py-2 px-6 text-sm flex justify-between items-center hidden md:flex border-b border-white/5">
+        <div class="flex gap-4 items-center">
+            <span class="flex items-center gap-1"><i data-lucide="phone" class="w-4 h-4 text-blue-400"></i> +91 4637 220999</span>
+            <span class="flex items-center gap-1 font-semibold underline decoration-blue-500 underline-offset-4 tracking-tight">peteccivil@petengg.ac.in</span>
+        </div>
+        <div class="flex gap-4 text-[10px] font-bold uppercase tracking-widest">
+            <a href="https://petengg.ac.in/" target="_blank" class="hover:text-blue-400 transition italic">Official College Website</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-20 items-center">
+            <div class="flex flex-col">
+                <a href="index.html" class="flex flex-col group">
+                    <span class="text-xl md:text-2xl font-bold text-[#002147] uppercase leading-none tracking-tighter group-hover:text-blue-600 transition">PET Engineering College</span>
+                    <span class="text-[10px] md:text-xs font-semibold text-blue-600 uppercase tracking-[0.2em] mt-1">Department of Civil Engineering</span>
+                </a>
+            </div>
+            <div class="hidden md:flex items-center space-x-6 font-semibold text-xs uppercase tracking-wider">
+                <a href="index.html" class="text-[#002147] hover:text-blue-600">Home</a>
+                <a href="index.html#objectives" class="text-[#002147] hover:text-blue-600">Academics</a>
+                <a href="#" class="text-blue-600 font-bold border-b-2 border-blue-600 pb-1">Faculty</a>
+                <a href="index.html#associations" class="text-[#002147] hover:text-blue-600">Erace</a>
+                <a href="bvisor.html" class="text-[#002147] hover:text-blue-600">Bvisor</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-[#002147] py-20 px-4 text-center text-white relative overflow-hidden">
+        <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4 relative z-10">Faculty Directory</h1>
+        <p class="text-blue-300 font-bold tracking-[0.3em] uppercase text-[10px] relative z-10">Academic Experts & Industry Mentors</p>
+    </header>
+
+    <!-- Refined HOD Section -->
+    <section class="py-16 px-4 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-stretch">
+            
+            <!-- HOD Card (Left) -->
+            <div class="lg:w-1/3">
+                <div class="bg-white rounded-3xl overflow-hidden card-shadow border-2 border-blue-100 group faculty-card">
+                    <div class="photo-container">
+                        <i data-lucide="user" class="w-20 h-20 text-slate-100"></i>
+                        <img src="assets/faculty-usman.jpg" alt="Dr. Mohamed Usman T M" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-0" onload="this.style.opacity='1'">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-xl font-black text-[#002147] uppercase tracking-tight leading-tight text-pretty">Dr. Mohamed Usman T M</h3>
+                        <p class="text-slate-500 text-[10px] font-bold uppercase mt-1 mb-3">B.Tech., M.E. Ph.D. MIE</p>
+                        <p class="text-blue-600 text-[10px] font-black uppercase tracking-widest mb-6">Assistant Professor & HOD</p>
+                        <div class="mt-auto pt-6 border-t border-slate-100 flex gap-2">
+                            <a href="#" title="LinkedIn" class="social-btn"><img src="assets/linkedin.png" alt="LinkedIn" onerror="this.src='https://cdn-icons-png.flaticon.com/512/174/174857.png'"></a>
+                            <a href="#" title="Google Scholar" class="social-btn"><img src="assets/scholar.png" alt="Scholar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/281/281764.png'"></a>
+                            <a href="#" title="ORCID" class="social-btn"><img src="assets/orcid.png" alt="ORCID" onerror="this.src='https://cdn-icons-png.flaticon.com/512/512/512211.png'"></a>
+                            <a href="#" title="Personal Website" class="social-btn"><img src="assets/website.png" alt="Website" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1006/1006771.png'"></a>
+                            <a href="mailto:peteccivil@petengg.ac.in" class="social-btn"><img src="assets/email.png" alt="Email" onerror="this.src='https://cdn-icons-png.flaticon.com/512/732/732200.png'"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOD Message (Right - Industry Ready Focus) -->
+            <div class="lg:w-2/3 flex flex-col justify-center space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="text-blue-600 font-black uppercase tracking-[0.4em] text-[9px]">HOD's Message</span>
+                    <div class="h-px flex-grow bg-slate-100"></div>
+                </div>
+                
+                <!-- Main Industry-Ready Claim -->
+                <h2 class="text-3xl lg:text-5xl font-black text-[#002147] uppercase tracking-tighter leading-tight italic">
+                    Empowering <br class="md:hidden">
+                    <span class="text-blue-600">Industry-Ready</span> <br class="md:hidden">
+                    Professionals
+                </h2>
+                
+                <div class="w-12 h-1 bg-[#002147] rounded-full"></div>
+                
+                <div class="space-y-4">
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed italic font-medium max-w-2xl">
+                        Our department is dedicated to contributing toward <span class="text-[#002147] font-bold border-b-2 border-blue-100">environmental preservation</span> and overall sustainable development through technical excellence and ethical practice.
+                    </p>
+                    <p class="text-slate-500 text-sm leading-relaxed max-w-3xl">
+                        We go beyond theoretical instruction to provide an educational environment that mirrors the evolving needs of the global engineering sector. Our primary focus is on developing **industry-ready competencies** and fostering an **entrepreneurial mindset** among our students. By blending conceptual depth with practical execution, we empower our graduates to handle complex professional challenges with moral clarity and a deep commitment to social responsibility.
+                    </p>
+                </div>
+                
+                <div class="pt-6 flex items-center gap-4">
+                    <div class="h-10 w-px bg-slate-200"></div>
+                    <div>
+                        <p class="font-black text-[#002147] text-base uppercase tracking-tight leading-none">Dr. Mohamed Usman T M</p>
+                        <p class="text-[9px] text-blue-600 font-black uppercase tracking-[0.2em] mt-2">Head of Department | Civil Engineering</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Faculty Grid -->
+    <main class="max-w-7xl mx-auto py-24 px-4">
+        <div class="mb-16 text-center">
+            <span class="text-blue-600 font-black uppercase tracking-[0.3em] text-[10px]">Academic Staff</span>
+            <h2 class="text-3xl font-black text-[#002147] uppercase tracking-widest mt-2">Teaching Faculty</h2>
+            <div class="w-12 h-1 bg-blue-600 mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <!-- 2. Mr. Basheer Ahamed. M. K -->
+            <div class="bg-white rounded-3xl overflow-hidden card-shadow border border-slate-100 group faculty-card">
+                <div class="photo-container">
+                    <i data-lucide="user" class="w-20 h-20 text-slate-100"></i>
+                    <img src="assets/faculty-basheer.jpg" alt="Mr. Basheer Ahamed. M. K" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-0" onload="this.style.opacity='1'">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-xl font-black text-[#002147] uppercase tracking-tight leading-tight">Mr. Basheer Ahamed. M. K</h3>
+                    <p class="text-slate-500 text-[10px] font-bold uppercase mt-1 mb-3">B.E., M.E. MIE</p>
+                    <p class="text-blue-600 text-[10px] font-black uppercase tracking-widest mb-6">Assistant Professor</p>
+                    <div class="mt-auto pt-6 border-t border-slate-100 flex gap-2">
+                        <a href="#" class="social-btn"><img src="assets/linkedin.png" alt="LI"></a>
+                        <a href="#" class="social-btn"><img src="assets/scholar.png" alt="GS"></a>
+                        <a href="#" class="social-btn"><img src="assets/orcid.png" alt="ID"></a>
+                        <a href="#" class="social-btn"><img src="assets/website.png" alt="W"></a>
+                        <a href="mailto:#" class="social-btn"><img src="assets/email.png" alt="E"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Dr. Sokkanathan G -->
+            <div class="bg-white rounded-3xl overflow-hidden card-shadow border border-slate-100 group faculty-card">
+                <div class="photo-container">
+                    <i data-lucide="user" class="w-20 h-20 text-slate-100"></i>
+                    <img src="assets/faculty-sokkanathan.jpg" alt="Dr. Sokkanathan G" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-0" onload="this.style.opacity='1'">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-xl font-black text-[#002147] uppercase tracking-tight leading-tight text-pretty">Dr. Sokkanathan G</h3>
+                    <p class="text-slate-500 text-[10px] font-bold uppercase mt-1 mb-3 text-pretty">B.E., M.E., Ph.D.</p>
+                    <p class="text-blue-600 text-[10px] font-black uppercase tracking-widest mb-6">Associate Professor</p>
+                    <div class="mt-auto pt-6 border-t border-slate-100 flex gap-2">
+                        <a href="#" class="social-btn"><img src="assets/linkedin.png" alt="LI"></a>
+                        <a href="#" class="social-btn"><img src="assets/scholar.png" alt="GS"></a>
+                        <a href="#" class="social-btn"><img src="assets/orcid.png" alt="ID"></a>
+                        <a href="#" class="social-btn"><img src="assets/website.png" alt="W"></a>
+                        <a href="mailto:#" class="social-btn"><img src="assets/email.png" alt="E"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Mr. Ruban Daniel V -->
+            <div class="bg-white rounded-3xl overflow-hidden card-shadow border border-slate-100 group faculty-card">
+                <div class="photo-container">
+                    <i data-lucide="user" class="w-20 h-20 text-slate-100"></i>
+                    <img src="assets/faculty-ruban.jpg" alt="Mr. Ruban Daniel V" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-0" onload="this.style.opacity='1'">
+                </div>
+                <div class="p-8 flex flex-col flex-grow text-pretty">
+                    <h3 class="text-xl font-black text-[#002147] uppercase tracking-tight leading-tight text-pretty">Mr. Ruban Daniel V</h3>
+                    <p class="text-slate-500 text-[10px] font-bold uppercase mt-1 mb-3">BE., ME. Ph.D. (doing)</p>
+                    <p class="text-blue-600 text-[10px] font-black uppercase tracking-widest mb-6">Assistant Professor</p>
+                    <div class="mt-auto pt-6 border-t border-slate-100 flex gap-2">
+                        <a href="#" class="social-btn"><img src="assets/linkedin.png" alt="LI"></a>
+                        <a href="#" class="social-btn"><img src="assets/scholar.png" alt="GS"></a>
+                        <a href="#" class="social-btn"><img src="assets/orcid.png" alt="ID"></a>
+                        <a href="#" class="social-btn"><img src="assets/website.png" alt="W"></a>
+                        <a href="mailto:#" class="social-btn"><img src="assets/email.png" alt="E"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Mrs. Reshma Raj P V -->
+            <div class="bg-white rounded-3xl overflow-hidden card-shadow border border-slate-100 group faculty-card">
+                <div class="photo-container">
+                    <i data-lucide="user" class="w-20 h-20 text-slate-100"></i>
+                    <img src="assets/faculty-reshma.jpg" alt="Mrs. Reshma Raj P V" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-0" onload="this.style.opacity='1'">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-xl font-black text-[#002147] uppercase tracking-tight leading-tight">Mrs. Reshma Raj P V</h3>
+                    <p class="text-slate-500 text-[10px] font-bold uppercase mt-1 mb-3">B.E., M.E. Ph.D. (doing)</p>
+                    <p class="text-blue-600 text-[10px] font-black uppercase tracking-widest mb-6">Assistant Professor</p>
+                    <div class="mt-auto pt-6 border-t border-slate-100 flex gap-2">
+                        <a href="#" class="social-btn"><img src="assets/linkedin.png" alt="LI"></a>
+                        <a href="#" class="social-btn"><img src="assets/scholar.png" alt="GS"></a>
+                        <a href="#" class="social-btn"><img src="assets/orcid.png" alt="ID"></a>
+                        <a href="#" class="social-btn"><img src="assets/website.png" alt="W"></a>
+                        <a href="mailto:#" class="social-btn"><img src="assets/email.png" alt="E"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Dr. Mohamed Sahibulla S M -->
+            <div class="bg-white rounded-3xl overflow-hidden card-shadow border border-slate-100 group faculty-card">
+                <div class="photo-container">
+                    <i data-lucide="user" class="w-20 h-20 text-slate-100"></i>
+                    <img src="assets/faculty-sahibulla.jpg" alt="Dr. Mohamed Sahibulla S M" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-0" onload="this.style.opacity='1'">
+                </div>
+                <div class="p-8 flex flex-col flex-grow text-pretty">
+                    <h3 class="text-xl font-black text-[#002147] uppercase tracking-tight leading-tight">Dr. Mohamed Sahibulla S M</h3>
+                    <p class="text-slate-500 text-[10px] font-bold uppercase mt-1 mb-3">B.E., M.E., Ph.D</p>
+                    <p class="text-blue-600 text-[10px] font-black uppercase tracking-widest mb-6">Assistant Professor</p>
+                    <div class="mt-auto pt-6 border-t border-slate-100 flex gap-2">
+                        <a href="#" class="social-btn"><img src="assets/linkedin.png" alt="LI"></a>
+                        <a href="#" class="social-btn"><img src="assets/scholar.png" alt="GS"></a>
+                        <a href="#" class="social-btn"><img src="assets/orcid.png" alt="ID"></a>
+                        <a href="#" class="social-btn"><img src="assets/website.png" alt="W"></a>
+                        <a href="mailto:#" class="social-btn"><img src="assets/email.png" alt="E"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Mr. Petchi Muthu E -->
+            <div class="bg-white rounded-3xl overflow-hidden card-shadow border border-slate-100 group faculty-card">
+                <div class="photo-container">
+                    <i data-lucide="user" class="w-20 h-20 text-slate-100"></i>
+                    <img src="assets/faculty-petchi.jpg" alt="Mr. Petchi Muthu E" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-0" onload="this.style.opacity='1'">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-xl font-black text-[#002147] uppercase tracking-tight leading-tight text-pretty">Mr. Petchi Muthu E</h3>
+                    <p class="text-slate-500 text-[10px] font-bold uppercase mt-1 mb-3">B.E., M.E.</p>
+                    <p class="text-blue-600 text-[10px] font-black uppercase tracking-widest mb-6">Assistant Professor</p>
+                    <div class="mt-auto pt-6 border-t border-slate-100 flex gap-2">
+                        <a href="#" class="social-btn"><img src="assets/linkedin.png" alt="LI"></a>
+                        <a href="#" class="social-btn"><img src="assets/scholar.png" alt="GS"></a>
+                        <a href="#" class="social-btn"><img src="assets/orcid.png" alt="ID"></a>
+                        <a href="#" class="social-btn"><img src="assets/website.png" alt="W"></a>
+                        <a href="mailto:#" class="social-btn"><img src="assets/email.png" alt="E"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Ms. Astin Simprose Shenuba. A -->
+            <div class="bg-white rounded-3xl overflow-hidden card-shadow border border-slate-100 group faculty-card">
+                <div class="photo-container">
+                    <i data-lucide="user" class="w-20 h-20 text-slate-100"></i>
+                    <img src="assets/faculty-astin.jpg" alt="Ms. Astin Simprose Shenuba. A" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-0" onload="this.style.opacity='1'">
+                </div>
+                <div class="p-8 flex flex-col flex-grow text-pretty">
+                    <h3 class="text-xl font-black text-[#002147] uppercase tracking-tight leading-tight">Ms. Astin Simprose Shenuba. A</h3>
+                    <p class="text-slate-500 text-[10px] font-bold uppercase mt-1 mb-3">B.E., M.E. [PH.D]</p>
+                    <p class="text-blue-600 text-[10px] font-black uppercase tracking-widest mb-6">Assistant Professor</p>
+                    <div class="mt-auto pt-6 border-t border-slate-100 flex gap-2">
+                        <a href="#" class="social-btn"><img src="assets/linkedin.png" alt="LI"></a>
+                        <a href="#" class="social-btn"><img src="assets/scholar.png" alt="GS"></a>
+                        <a href="#" class="social-btn"><img src="assets/orcid.png" alt="ID"></a>
+                        <a href="#" class="social-btn"><img src="assets/website.png" alt="W"></a>
+                        <a href="mailto:#" class="social-btn"><img src="assets/email.png" alt="E"></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-16 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-balance text-center md:text-left">
+            <div class="space-y-6">
+                <h3 class="text-white font-black text-xl tracking-tighter uppercase leading-none text-pretty">PET Engineering <br> College</h3>
+                <p class="text-xs font-light leading-relaxed">Quality Technical Education since 1998. Accredited by NAAC.</p>
+            </div>
+            <div class="space-y-6">
+                <h4 class="text-white font-black uppercase text-[10px] tracking-widest border-l-2 border-blue-600 pl-4 mx-auto md:mx-0 w-fit">Navigation</h4>
+                <ul class="space-y-3 text-xs font-medium uppercase tracking-tight">
+                    <li><a href="index.html" class="hover:text-blue-400 transition">Home</a></li>
+                    <li><a href="bvisor.html" class="hover:text-blue-400 transition">Bvisor Startup</a></li>
+                    <li><a href="index.html#associations" class="hover:text-blue-400 transition text-pretty">Associations</a></li>
+                </ul>
+            </div>
+            <div class="lg:col-span-2 space-y-6">
+                <h4 class="text-white font-black uppercase text-[10px] tracking-widest border-l-2 border-blue-600 pl-4 mx-auto md:mx-0 w-fit">Inquiries</h4>
+                <p class="text-sm font-bold text-blue-400">peteccivil@petengg.ac.in</p>
+                <p class="text-[10px] uppercase font-bold tracking-widest text-pretty leading-relaxed">Vallioor, Tirunelveli District, Tamil Nadu</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-slate-800 mt-12 pt-8 text-[10px] uppercase font-black tracking-widest text-center">
+            <p>&copy; 2024 Department of Civil Engineering</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
