@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Engineering | PET Engineering College</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 33, 71, 0.92), rgba(0, 33, 71, 0.92)), 
+                        url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+        }
+        .bvisor-accent { background: linear-gradient(135deg, #001a33 0%, #003366 100%); }
+        .card-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
+        .map-container iframe { width: 100%; height: 400px; border-radius: 1rem; border: none; }
+        .animate-spin-slow { animation: spin 12s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        
+        /* Floating AI Hub Styles */
+        #ai-chat-container {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #ai-chat-container.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+        .dot-pulse { position: relative; left: -9999px; width: 10px; height: 10px; border-radius: 5px; background-color: #3b82f6; color: #3b82f6; box-shadow: 9999px 0 0 0 #3b82f6; animation: dot-pulse 1.5s infinite linear; }
+        @keyframes dot-pulse { 0% { box-shadow: 9999px 0 0 -5px #3b82f6; } 30% { box-shadow: 9999px 0 0 2px #3b82f6; } 60%, 100% { box-shadow: 9999px 0 0 -5px #3b82f6; } }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Top Bar -->
+    <div class="bg-[#002147] text-white py-2 px-6 text-sm flex justify-between items-center hidden md:flex">
+        <div class="flex gap-4 items-center">
+            <span class="flex items-center gap-1"><i data-lucide="phone" class="w-4 h-4 text-blue-400"></i> +91 4637 220999</span>
+            <span class="flex items-center gap-1 font-semibold underline decoration-blue-500 underline-offset-4 tracking-tight">peteccivil@petengg.ac.in</span>
+            <span class="h-4 w-px bg-slate-600 mx-2"></span>
+            <a href="https://petengg.ac.in/" target="_blank" class="flex items-center gap-1 text-blue-300 hover:text-white transition italic font-medium"><i data-lucide="globe" class="w-4 h-4"></i> petengg.ac.in</a>
+        </div>
+        <div class="flex gap-4 text-[10px] font-bold uppercase tracking-widest">
+            <a href="#" class="hover:text-blue-400">Student Portal</a>
+            <a href="#" class="hover:text-blue-400">Alumni</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-20 items-center">
+            <div class="flex flex-col">
+                <span class="text-xl md:text-2xl font-bold text-[#002147] uppercase leading-none tracking-tighter">PET Engineering College</span>
+                <span class="text-[10px] md:text-xs font-semibold text-blue-600 uppercase tracking-[0.2em] mt-1">Department of Civil Engineering</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6 font-semibold text-xs uppercase tracking-wider">
+                <a href="#" class="text-blue-600 border-b-2 border-blue-600 pb-1">Home</a>
+                <a href="#objectives" class="text-[#002147] hover:text-blue-600">Academics</a>
+                <a href="#" class="text-[#002147] hover:text-blue-600">Faculty</a>
+                <a href="#" class="text-[#002147] hover:text-blue-600">Magazine</a>
+                <a href="#" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition shadow-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative hero-gradient h-[600px] flex items-center justify-center text-center text-white px-4">
+        <div class="max-w-5xl">
+            <h1 class="text-4xl md:text-7xl font-black mb-4 uppercase tracking-tight leading-tight">Department of <br class="hidden md:block text-blue-500"> Civil Engineering</h1>
+            <p class="text-blue-400 font-bold uppercase tracking-[0.5em] mb-10 text-sm md:text-lg">Constructing Excellence</p>
+            
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <a href="#objectives" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-bold transition shadow-lg uppercase tracking-wider text-xs">Explore Programs</a>
+                
+                <a href="#" class="w-full md:w-auto bg-white text-[#002147] hover:bg-slate-100 px-8 py-4 rounded-md font-bold transition shadow-lg uppercase tracking-wider text-xs flex items-center justify-center gap-2">
+                    <i data-lucide="book-open" class="w-4 h-4"></i> Read Magazine
+                </a>
+
+                <button onclick="toggleAIChat()" class="w-full md:w-auto bg-white text-[#002147] hover:bg-slate-100 px-8 py-4 rounded-md font-bold transition shadow-lg uppercase tracking-wider text-xs flex items-center justify-center gap-2 border-2 border-blue-100/50">
+                    ✨ Ask AI Assistant
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="max-w-6xl mx-auto -mt-12 relative z-10 px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white p-6 rounded-xl shadow-xl text-center border-b-4 border-blue-600">
+                <h3 class="text-3xl font-bold text-blue-600 italic">09+</h3>
+                <p class="text-slate-500 text-[10px] font-bold uppercase mt-1 tracking-widest">Faculty Experts</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-xl text-center border-b-4 border-blue-600">
+                <h3 class="text-3xl font-bold text-blue-600 italic">08</h3>
+                <p class="text-slate-500 text-[10px] font-bold uppercase mt-1 tracking-widest">Specialized Labs</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-xl text-center border-b-4 border-blue-600">
+                <h3 class="text-3xl font-bold text-blue-600 italic">05+</h3>
+                <p class="text-slate-500 text-[10px] font-bold uppercase mt-1 tracking-widest text-balance leading-tight">Industry MoUs</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-xl text-center border-b-4 border-blue-600">
+                <h3 class="text-3xl font-bold text-blue-600 italic uppercase">100%</h3>
+                <p class="text-slate-500 text-[10px] font-bold uppercase mt-1 tracking-widest text-balance leading-tight">Career Assistance</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bvisor Section -->
+    <section class="py-24 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="bvisor-accent rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row items-stretch">
+                <div class="p-10 lg:p-16 lg:w-3/5 text-white">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="bg-blue-400/20 text-blue-100 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] border border-blue-400/30">Innovation Spotlight</span>
+                    </div>
+                    <h2 class="text-4xl lg:text-5xl font-black mb-6 tracking-tight uppercase italic text-white">MEET BVISOR</h2>
+                    <p class="text-blue-50 text-base lg:text-lg font-light leading-relaxed mb-6">
+                        <span class="font-bold text-white uppercase tracking-tighter">Bvisor</span> is a civil engineering startup by the Department of Civil Engineering, PET Engineering College. We bridge the gap between academia and industry, delivering professional-grade solutions for global infrastructure projects.
+                    </p>
+                    <p class="text-blue-50 text-base font-light leading-relaxed mb-8">
+                        Operating in partnership with <span class="text-blue-300 font-bold italic underline decoration-blue-500/50 underline-offset-8 uppercase tracking-wide text-sm">Al Mussiver Structural Consultants</span>, we combine faculty expertise and modern tools to ensure excellence and real-world training for young engineers.
+                    </p>
+                    <div class="flex flex-wrap gap-6 pt-6 border-t border-white/10">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="shield-check" class="text-blue-400 w-5 h-5"></i>
+                            <span class="text-xs font-semibold uppercase tracking-widest">Global Standards</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="users" class="text-blue-400 w-5 h-5"></i>
+                            <span class="text-xs font-semibold uppercase tracking-widest">Industry Model</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-2/5 bg-slate-900/40 p-12 flex flex-col items-center justify-center border-t lg:border-t-0 lg:border-l border-white/5 backdrop-blur-md text-center">
+                    <div class="w-32 h-32 bg-white rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl group hover:scale-110 transition">
+                        <span class="text-[#002147] font-black text-5xl italic tracking-tighter">Bv</span>
+                    </div>
+                    <h4 class="text-white font-black text-2xl tracking-[0.1em] mb-2 uppercase">BVISOR</h4>
+                    <button class="mt-8 px-10 py-3 bg-blue-600 text-white rounded-full font-bold text-xs uppercase tracking-widest hover:bg-blue-500 transition shadow-lg">Contact Bvisor</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PEOs -->
+    <section id="objectives" class="py-20 px-4 max-w-7xl mx-auto border-b border-slate-200">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-[#002147] mb-4 uppercase tracking-widest">Programme Educational Objectives</h2>
+            <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-balance">
+            <div class="bg-white p-8 rounded-2xl border border-slate-200 card-shadow border-t-4 border-t-blue-600 hover:scale-105 transition">
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-black mb-6">01</div>
+                <h4 class="text-lg font-bold mb-4 text-[#002147] uppercase tracking-tighter">Professional Career</h4>
+                <p class="text-slate-600 text-sm leading-relaxed font-light">Gain knowledge and skills in Civil engineering to enable a career and professional accomplishment in the public or private sector organizations.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-200 card-shadow border-t-4 border-t-blue-600 hover:scale-105 transition">
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-black mb-6">02</div>
+                <h4 class="text-lg font-bold mb-4 text-[#002147] uppercase tracking-tighter">Expert Consultancy</h4>
+                <p class="text-slate-600 text-sm leading-relaxed font-light">Become consultants on complex real life Civil Engineering problems related to Infrastructure development especially housing and transport.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-200 card-shadow border-t-4 border-t-blue-600 hover:scale-105 transition">
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-black mb-6">03</div>
+                <h4 class="text-lg font-bold mb-4 text-[#002147] uppercase tracking-tighter">Entrepreneurship</h4>
+                <p class="text-slate-600 text-sm leading-relaxed font-light">Become entrepreneurs and develop processes to meet infrastructure needs with solutions that are technically sound and economically feasible.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-200 card-shadow border-t-4 border-t-blue-600 hover:scale-105 transition">
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-black mb-6">04</div>
+                <h4 class="text-lg font-bold mb-4 text-[#002147] uppercase tracking-tighter text-balance text-balance">Modern Research</h4>
+                <p class="text-slate-600 text-sm leading-relaxed font-light">Perform investigation for solving Civil Engineering problems by conducting research using modern equipment and software tools.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-200 card-shadow border-t-4 border-t-blue-600 hover:scale-105 transition">
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-black mb-6">05</div>
+                <h4 class="text-lg font-bold mb-4 text-[#002147] uppercase tracking-tighter text-balance">Multi-disciplinary</h4>
+                <p class="text-slate-600 text-sm leading-relaxed font-light">Function in multi-disciplinary teams and advocate policies, systems, and processes to support civil engineering.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Messages Section -->
+    <section id="messages" class="py-20 px-4 max-w-7xl mx-auto border-b border-slate-200">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-black text-[#002147] mb-4 uppercase tracking-wider">Leadership Messages</h2>
+            <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="text-center group">
+                <div class="w-full aspect-[4/5] bg-slate-200 rounded-2xl mb-4 overflow-hidden shadow-inner border border-slate-200 group-hover:border-blue-400 transition">
+                    <div class="w-full h-full flex items-center justify-center text-[10px] uppercase font-black text-slate-400">Trustee Photo</div>
+                </div>
+                <h4 class="text-xs font-bold text-[#002147] uppercase tracking-tight">Mr. Mohamed Farook S</h4>
+                <p class="text-[9px] text-pink-600 font-black uppercase tracking-widest">Managing Trustee</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-full aspect-[4/5] bg-slate-200 rounded-2xl mb-4 overflow-hidden shadow-inner border border-slate-200 group-hover:border-blue-400 transition">
+                    <div class="w-full h-full flex items-center justify-center text-[10px] uppercase font-black text-slate-400">Secretary Photo</div>
+                </div>
+                <h4 class="text-xs font-bold text-[#002147] uppercase tracking-tight">Mr. Khaja Mohideen S</h4>
+                <p class="text-[9px] text-pink-600 font-black uppercase tracking-widest">Secretary</p>
+            </div>
+            <div class="text-center group text-balance">
+                <div class="w-full aspect-[4/5] bg-slate-200 rounded-2xl mb-4 overflow-hidden shadow-inner border border-slate-200 group-hover:border-blue-400 transition">
+                    <div class="w-full h-full flex items-center justify-center text-[10px] uppercase font-black text-slate-400">Treasurer Photo</div>
+                </div>
+                <h4 class="text-xs font-bold text-[#002147] uppercase tracking-tight">Mr. Mohamed Abdul Razak K</h4>
+                <p class="text-[9px] text-pink-600 font-black uppercase tracking-widest">Treasurer</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-full aspect-[4/5] bg-slate-200 rounded-2xl mb-4 overflow-hidden shadow-inner border border-slate-200 group-hover:border-blue-400 transition">
+                    <div class="w-full h-full flex items-center justify-center text-[10px] uppercase font-black text-slate-400">Principal Photo</div>
+                </div>
+                <h4 class="text-xs font-bold text-[#002147] uppercase tracking-tight">Dr. Madhan Kumar K</h4>
+                <p class="text-[9px] text-pink-600 font-black uppercase tracking-widest">Principal</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Us Section -->
+    <section class="py-20 px-4 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-black text-[#002147] mb-6 uppercase tracking-widest text-balance">Visit Us</h2>
+                <p class="text-slate-600 mb-8 leading-relaxed font-medium text-pretty">As a premier department of <span class="text-blue-600 font-bold">PET Engineering College</span>, we invite you to explore department, innovation and campus infrastructure in Vallioor.</p>
+                
+                <!-- Landmark Attraction Card -->
+                <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-2xl mb-8 shadow-sm">
+                    <div class="flex items-center gap-4 mb-3">
+                        <!-- Bridge Icon with Rotating Animation -->
+                        <div class="relative flex items-center justify-center w-10 h-10">
+                            <svg viewBox="0 0 24 24" class="w-8 h-8 text-blue-600 fill-none stroke-current stroke-2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 18c6-6 12-6 18 0" />
+                                <path d="M8 13V9" />
+                                <path d="M16 13V9" />
+                                <path d="M3 13h18" />
+                            </svg>
+                            <div class="absolute -top-1 -right-1">
+                                <i data-lucide="refresh-cw" class="w-4 h-4 text-blue-500 animate-spin-slow"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-[#002147] uppercase tracking-tight">Department Landmark</h4>
+                    </div>
+                    <p class="text-sm font-black text-slate-800 mb-1 italic text-balance">The Rotating Bridge</p>
+                    <p class="text-xs text-slate-600 leading-relaxed font-medium text-pretty">A unique structural innovation right at our doorstep, showcasing the ingenuity of our civil engineering department.</p>
+                </div>
+
+                <div class="space-y-4 text-sm">
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="text-blue-600 w-5 h-5 flex-shrink-0"></i>
+                        <span class="text-slate-700 font-bold">6, Thiruchendur Road, Madapuram, Vallioor, Tirunelveli - 627 117</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="navigation" class="text-blue-600 w-5 h-5"></i>
+                        <span class="font-mono text-xs font-bold text-blue-800 bg-blue-100 px-2 py-1 rounded">Plus Code: 9J8P+QCR</span>
+                    </div>
+                </div>
+                <a href="https://www.google.com/maps/dir//PET+Engineering+College,+9J8P%2BQCR,+Madappuram,+Tamil+Nadu+627117" target="_blank" class="mt-8 inline-flex items-center gap-2 bg-[#002147] text-white px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-blue-600 transition shadow-lg group">
+                    <i data-lucide="map" class="group-hover:rotate-12 transition"></i> Get Directions to PETEC
+                </a>
+            </div>
+            <div class="map-container card-shadow overflow-hidden bg-slate-100 min-h-[400px]">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.280145892524!2d77.6117369!3d8.3746618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b047517c2f1f0a3%3A0x7d6b383838383838!2sPET%20Engineering%20College!5e0!3m2!1sen!2sin!4v1711551000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-20 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-balance">
+            <div class="space-y-6">
+                <h3 class="text-white font-black text-xl mb-4 tracking-tighter uppercase leading-none">PET Engineering <br> College</h3>
+                <p class="text-sm font-light leading-relaxed">Quality technical education since 1998. Affiliated to Anna University & Approved by AICTE. Accredited by NAAC.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-blue-600 transition text-white"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-blue-600 transition text-white"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <h4 class="text-white font-black uppercase text-[10px] tracking-[0.2em] border-l-2 border-blue-600 pl-4">Quick Links</h4>
+                <ul class="space-y-3 text-sm font-medium">
+                    <li><a href="#" class="hover:text-blue-400 transition">Academic Programs</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Faculty Directory</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Lab Facilities</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Consultancy Work</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Placement Details</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Department Magazine</a></li>
+                </ul>
+            </div>
+            <div class="lg:col-span-2 space-y-6">
+                <h4 class="text-white font-black uppercase text-[10px] tracking-[0.2em] border-l-2 border-blue-600 pl-4 text-balance">Reach Us</h4>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <p class="text-sm text-slate-300 font-bold uppercase tracking-widest text-[10px]">Campus Address</p>
+                        <p class="text-sm leading-relaxed font-medium">
+                            6, Thiruchendur Road,<br>
+                            Madapuram, Vallioor,<br>
+                            Tirunelveli - 627 117
+                        </p>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-sm text-slate-300 font-bold uppercase tracking-widest text-[10px]">Inquiries</p>
+                        <div class="space-y-2 font-bold">
+                            <p class="text-sm text-blue-400 underline decoration-blue-800 underline-offset-4">peteccivil@petengg.ac.in</p>
+                            <p class="text-sm">+91 4637 220999</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-slate-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-[10px] uppercase font-black tracking-[0.3em] text-slate-600">&copy; 2024 Department of Civil Engineering</p>
+            <div class="flex gap-6 text-[10px] uppercase font-black tracking-widest">
+                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ✨ FLOATING AI CHAT WIDGET ✨ -->
+    <div class="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-4">
+        <div id="ai-chat-container" class="w-[350px] md:w-[400px] h-[550px] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden">
+            <div class="bg-[#002147] p-4 text-white flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-pretty">✨ PETEC Career Desk</span>
+                </div>
+                <button onclick="toggleAIChat()" class="hover:rotate-90 transition p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            
+            <div id="ai-chat-window" class="flex-grow p-4 overflow-y-auto space-y-4 text-sm leading-relaxed bg-slate-50">
+                <div class="bg-blue-100 p-3 rounded-2xl rounded-tl-none text-slate-700 max-w-[85%] border border-blue-200">
+                    Welcome! I am your ✨ <b>Civil Engineering Career Guide</b>. 
+                    <br><br>
+                    I can help you understand:
+                    <ul class="list-disc ml-4 mt-2 space-y-1">
+                        <li>Career paths & job roles.</li>
+                        <li>How our activities (Bvisor, MoUs) prepare you.</li>
+                        <li>Why admission at PETEC is the right step.</li>
+                    </ul>
+                </div>
+                <!-- Suggested Counseling Chips -->
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <button onclick="prefillAI('What are the job opportunities for civil engineers?')" class="bg-white border border-slate-200 text-[10px] font-bold px-3 py-1.5 rounded-full hover:bg-blue-50 hover:border-blue-300 transition uppercase tracking-tighter">Job Roles</button>
+                    <button onclick="prefillAI('How do site visits and Bvisor help my career?')" class="bg-white border border-slate-200 text-[10px] font-bold px-3 py-1.5 rounded-full hover:bg-blue-50 hover:border-blue-300 transition uppercase tracking-tighter">Practical Training</button>
+                    <button onclick="prefillAI('Why choose PETEC for Civil Engineering?')" class="bg-white border border-slate-200 text-[10px] font-bold px-3 py-1.5 rounded-full hover:bg-blue-50 hover:border-blue-300 transition uppercase tracking-tighter">Admission Help</button>
+                </div>
+            </div>
+
+            <div id="ai-loading" class="hidden px-6 py-4 bg-slate-50 border-t border-slate-100">
+                <div class="dot-pulse"></div>
+            </div>
+
+            <div class="p-4 bg-white border-t border-slate-200 flex gap-2">
+                <input type="text" id="ai-input" placeholder="Ask about your career..." class="flex-grow p-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-sm">
+                <button onclick="askGemini()" class="bg-blue-600 text-white p-3 rounded-xl hover:bg-blue-700 transition shadow-md">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <button id="ai-toggle-btn" onclick="toggleAIChat()" class="w-16 h-16 bg-blue-600 rounded-full shadow-2xl flex items-center justify-center text-white hover:bg-blue-700 hover:scale-110 transition active:scale-95 border-4 border-white">
+            <i data-lucide="sparkles" id="ai-icon-sparkle"></i>
+        </button>
+    </div>
+
+    <script>
+        const apiKey = ""; // API key is handled by the environment
+        lucide.createIcons();
+
+        function toggleAIChat() {
+            const container = document.getElementById('ai-chat-container');
+            const icon = document.getElementById('ai-icon-sparkle');
+            container.classList.toggle('active');
+            
+            if(container.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'chevron-down');
+            } else {
+                icon.setAttribute('data-lucide', 'sparkles');
+            }
+            lucide.createIcons();
+        }
+
+        function prefillAI(text) {
+            document.getElementById('ai-input').value = text;
+            askGemini();
+        }
+
+        async function askGemini() {
+            const inputEl = document.getElementById('ai-input');
+            const chatWindow = document.getElementById('ai-chat-window');
+            const loading = document.getElementById('ai-loading');
+            const query = inputEl.value.trim();
+
+            if (!query) return;
+
+            document.getElementById('ai-chat-container').classList.add('active');
+
+            // User bubble
+            const userMsg = document.createElement('div');
+            userMsg.className = "bg-slate-200 p-3 rounded-2xl rounded-tr-none text-slate-800 ml-auto max-w-[85%] border border-slate-300 font-medium";
+            userMsg.textContent = query;
+            chatWindow.appendChild(userMsg);
+            inputEl.value = '';
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+
+            loading.classList.remove('hidden');
+
+            const systemPrompt = `You are the Expert Career Counselor for the Department of Civil Engineering at PET Engineering College (PETEC), Vallioor. 
+            
+            Your Core Mission:
+            1. Career Counseling: Detail roles like Structural Engineer, Urban Planner, Project Manager, Site Engineer, and Environmental Consultant. Mention sectors like Infrastructure (GAIL, PWD, Railways), Housing, and Sewerage.
+            2. Activity Bridge: Explain how our activities (Site Visits, Internships, MoUs like FACEAT&P, and Bvisor Startup) turn students into professional consultants.
+            3. Department Value: Focus on our landmark "Rotating Bridge" and "Bvisor" (partnership with Al Mussiver Structural Consultants) as proof of our technical excellence.
+            4. Encouragement: Convince new admission seekers why Civil Engineering at PETEC leads to "Constructing Excellence".
+            
+            Key Data:
+            - Notable Alumni: Balasubramanian I (Senior Engineer at GAIL India).
+            - Location: Vallioor, Tirunelveli.
+            - MoUs: FACEAT&P, Banu Constructions, AAA Designs.
+            
+            Tone: Visionary, professional, and mentoring. Keep responses structured with bullets where possible. Use "Constructing Excellence" as your motto.`;
+
+            const payload = {
+                contents: [{ parts: [{ text: query }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            const callApi = async (retryCount = 0) => {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) throw new Error('API Error');
+
+                    const data = await response.json();
+                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                    
+                    loading.classList.add('hidden');
+                    
+                    if (text) {
+                        const aiMsg = document.createElement('div');
+                        aiMsg.className = "bg-blue-600 p-3 rounded-2xl rounded-tl-none text-white max-w-[90%] shadow-md border border-blue-700";
+                        aiMsg.innerHTML = text.replace(/\n/g, '<br>');
+                        chatWindow.appendChild(aiMsg);
+                    } else {
+                        throw new Error('Empty response');
+                    }
+                } catch (error) {
+                    if (retryCount < 5) {
+                        const delay = Math.pow(2, retryCount) * 1000;
+                        setTimeout(() => callApi(retryCount + 1), delay);
+                    } else {
+                        loading.classList.add('hidden');
+                        const errorMsg = document.createElement('div');
+                        errorMsg.className = "bg-red-50 p-3 rounded-2xl text-red-600 max-w-[85%] border border-red-100 text-xs";
+                        errorMsg.textContent = "The Career Desk is currently busy. Please try again in a moment.";
+                        chatWindow.appendChild(errorMsg);
+                    }
+                }
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            };
+
+            callApi();
+        }
+
+        document.getElementById('ai-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') askGemini();
+        });
+    </script>
+</body>
+</html>
