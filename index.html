@@ -412,99 +412,102 @@
     </div>
 
     <script>
-        const apiKey = "AIzaSyCj5rUBz9E166DxQ1dJBbdGOd_juQxiGsI"; 
+    // Paste your key from AI Studio here
+    const apiKey = "AIzaSyCj5rUBz9E166DxQ1dJBbdGOd_juQxiGsI"; 
+    lucide.createIcons();
+
+    function toggleAIChat() {
+        const container = document.getElementById('ai-chat-container');
+        const icon = document.getElementById('ai-icon-sparkle');
+        container.classList.toggle('active');
+        
+        if(container.classList.contains('active')) {
+            icon.setAttribute('data-lucide', 'chevron-down');
+        } else {
+            icon.setAttribute('data-lucide', 'sparkles');
+        }
         lucide.createIcons();
+    }
 
-        function toggleAIChat() {
-            const container = document.getElementById('ai-chat-container');
-            const icon = document.getElementById('ai-icon-sparkle');
-            container.classList.toggle('active');
-            
-            if(container.classList.contains('active')) {
-                icon.setAttribute('data-lucide', 'chevron-down');
+    function prefillAI(text) {
+        document.getElementById('ai-input').value = text;
+        askGemini();
+    }
+
+    async function askGemini() {
+        const inputEl = document.getElementById('ai-input');
+        const chatWindow = document.getElementById('ai-chat-window');
+        const loading = document.getElementById('ai-loading');
+        const query = inputEl.value.trim();
+
+        if (!query) return;
+
+        document.getElementById('ai-chat-container').classList.add('active');
+
+        // Add User Message
+        const userMsg = document.createElement('div');
+        userMsg.className = "bg-slate-200 p-3 rounded-2xl rounded-tr-none text-slate-800 ml-auto max-w-[85%] border border-slate-300 font-medium text-xs";
+        userMsg.textContent = query;
+        chatWindow.appendChild(userMsg);
+        inputEl.value = '';
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+
+        loading.classList.remove('hidden');
+
+        const systemPrompt = "You are the Expert Career Counselor for the Civil Engineering Dept at PETEC, Vallioor. Explain roles like Structural/Site Engineer. Mention Bvisor startup and the Rotating Bridge as technical excellence. Keep answers concise and professional.";
+
+        const payload = {
+            contents: [{ parts: [{ text: query }] }],
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+            // Safety settings help prevent the "Busy/Error" message on preview models
+            safetySettings: [
+                { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_NONE" },
+                { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_NONE" },
+                { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_NONE" },
+                { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_NONE" }
+            ]
+        };
+
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await response.json();
+            loading.classList.add('hidden');
+
+            if (data.candidates && data.candidates[0].content) {
+                let text = data.candidates[0].content.parts[0].text;
+                
+                const aiMsg = document.createElement('div');
+                aiMsg.className = "bg-blue-600 p-3 rounded-2xl rounded-tl-none text-white max-w-[90%] shadow-md border border-blue-700 text-xs";
+                
+                // Convert simple Markdown from AI to HTML
+                aiMsg.innerHTML = text
+                    .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') // Bold
+                    .replace(/\n/g, '<br>'); // Line breaks
+                
+                chatWindow.appendChild(aiMsg);
             } else {
-                icon.setAttribute('data-lucide', 'sparkles');
+                throw new Error('Limit reached');
             }
-            lucide.createIcons();
+        } catch (error) {
+            loading.classList.add('hidden');
+            const errorMsg = document.createElement('div');
+            errorMsg.className = "bg-red-50 p-3 rounded-2xl text-red-600 max-w-[85%] border border-red-100 text-[10px]";
+            errorMsg.textContent = "The Career Desk is momentarily offline. Please try again.";
+            chatWindow.appendChild(errorMsg);
         }
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
 
-        function prefillAI(text) {
-            document.getElementById('ai-input').value = text;
-            askGemini();
-        }
-
-        async function askGemini() {
-            const inputEl = document.getElementById('ai-input');
-            const chatWindow = document.getElementById('ai-chat-window');
-            const loading = document.getElementById('ai-loading');
-            const query = inputEl.value.trim();
-
-            if (!query) return;
-
-            document.getElementById('ai-chat-container').classList.add('active');
-
-            const userMsg = document.createElement('div');
-            userMsg.className = "bg-slate-200 p-3 rounded-2xl rounded-tr-none text-slate-800 ml-auto max-w-[85%] border border-slate-300 font-medium";
-            userMsg.textContent = query;
-            chatWindow.appendChild(userMsg);
-            inputEl.value = '';
-            chatWindow.scrollTop = chatWindow.scrollHeight;
-
-            loading.classList.remove('hidden');
-
-            const systemPrompt = `You are the Expert Career Counselor for the Department of Civil Engineering at PET Engineering College (PETEC), Vallioor. 
-            Instruction: Explain career roles like Structural Engineer, Project Manager, Site Engineer. Link practical activities like Bvisor, site visits, and MoUs to professional success. Highlight the Rotating Bridge as technical proof of excellence. Convince admissions seekers of the motto "Constructing Excellence".`;
-
-            const payload = {
-                contents: [{ parts: [{ text: query }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] }
-            };
-
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-            const callApi = async (retryCount = 0) => {
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) throw new Error('API Error');
-
-                    const data = await response.json();
-                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                    
-                    loading.classList.add('hidden');
-                    
-                    if (text) {
-                        const aiMsg = document.createElement('div');
-                        aiMsg.className = "bg-blue-600 p-3 rounded-2xl rounded-tl-none text-white max-w-[90%] shadow-md border border-blue-700";
-                        aiMsg.innerHTML = text.replace(/\n/g, '<br>');
-                        chatWindow.appendChild(aiMsg);
-                    } else {
-                        throw new Error('Empty response');
-                    }
-                } catch (error) {
-                    if (retryCount < 5) {
-                        const delay = Math.pow(2, retryCount) * 1000;
-                        setTimeout(() => callApi(retryCount + 1), delay);
-                    } else {
-                        loading.classList.add('hidden');
-                        const errorMsg = document.createElement('div');
-                        errorMsg.className = "bg-red-50 p-3 rounded-2xl text-red-600 max-w-[85%] border border-red-100 text-[10px]";
-                        errorMsg.textContent = "The Career Desk is busy. Please try again later.";
-                        chatWindow.appendChild(errorMsg);
-                    }
-                }
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-            };
-
-            callApi();
-        }
-
-        document.getElementById('ai-input').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') askGemini();
-        });
-    </script>
+    document.getElementById('ai-input').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') askGemini();
+    });
+</script>
 </body>
 </html>
