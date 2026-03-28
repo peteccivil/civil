@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civerse 2025 | Grand Release</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
+        
+        /* The Unwrapping Animation */
+        .curtain-left { transition: transform 1.5s cubic-bezier(0.7, 0, 0.3, 1); }
+        .curtain-right { transition: transform 1.5s cubic-bezier(0.7, 0, 0.3, 1); }
+        
+        .unwrapped .curtain-left { transform: translateX(-100%); }
+        .unwrapped .curtain-right { transform: translateX(100%); }
+        .unwrapped .ribbon { opacity: 0; transform: scale(0.5); transition: 0.5s; }
+        .unwrapped .reveal-content { transform: scale(1.1); opacity: 0; transition: 1.5s ease-in; }
+
+        .glimmer {
+            background: linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.2) 50%, transparent 75%);
+            background-size: 200% 200%;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-[#002147] overflow-hidden h-screen w-screen flex items-center justify-center font-['Inter']">
+
+    <!-- The Magazine Cover (Hidden behind curtains) -->
+    <div class="absolute inset-0 flex items-center justify-center p-12">
+        <div class="max-w-md w-full bg-white p-4 shadow-2xl rounded-sm transform rotate-2">
+             <img src="assets/magazine-cover.jpg" alt="Magazine Cover" class="w-full h-auto grayscale-[0.5]" onerror="this.src='https://images.unsplash.com/photo-1544476073-92b8d6bb3620?q=80&w=800'">
+        </div>
+    </div>
+
+    <!-- The Curtains (The Wrapper) -->
+    <div id="wrapper" class="fixed inset-0 z-50 flex">
+        <!-- Left Half -->
+        <div class="curtain-left w-1/2 h-full bg-[#002147] border-r border-white/10 flex items-center justify-end relative">
+            <div class="ribbon w-1 h-full bg-blue-500 absolute right-0 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+        </div>
+        <!-- Right Half -->
+        <div class="curtain-right w-1/2 h-full bg-[#002147] border-l border-white/10 flex items-center justify-start">
+        </div>
+
+        <!-- Center Interactive Elements -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 text-center px-6">
+            <div class="reveal-content">
+                <div class="mb-6 inline-block px-4 py-1 border border-blue-400/30 rounded-full text-blue-400 text-[10px] uppercase tracking-[0.4em] font-black">
+                    Official Launch Ceremony
+                </div>
+                <h1 class="text-white text-6xl md:text-8xl font-black uppercase tracking-tighter italic mb-4">Civerse</h1>
+                <p class="text-blue-200/60 text-sm uppercase tracking-widest mb-12">Edition 2025-26 | Department of Civil Engineering</p>
+                
+                <button type="button" onclick="startReveal()" class="glimmer group relative bg-white text-[#002147] px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-sm shadow-[0_0_50px_rgba(255,255,255,0.1)] hover:scale-105 transition active:scale-95">
+                    <span class="relative z-10 flex items-center gap-4">
+                        <i data-lucide="key" class="w-5 h-5"></i>
+                        Unveil by Guest Member
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Ensure Lucide icons are initialized
+        window.addEventListener('load', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        function startReveal() {
+            const wrapper = document.getElementById('wrapper');
+            const targetPage = 'magazine.html';
+            
+            if (!wrapper) return;
+
+            // Trigger Animation by adding class to the wrapper
+            wrapper.classList.add('unwrapped');
+            
+            // Log for debugging visibility in some environments
+            console.log('Unwrapping initiated. Redirecting to:', targetPage);
+            
+            // Wait for animation to finish (1.5s curtain + some buffer) then redirect
+            setTimeout(() => {
+                try {
+                    // Using location.assign for better error handling/compatibility
+                    window.location.assign(targetPage);
+                } catch (e) {
+                    // Fallback to direct href assignment if assign fails
+                    window.location.href = targetPage;
+                }
+            }, 2000); 
+        }
+    </script>
+</body>
+</html>
